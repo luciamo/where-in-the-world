@@ -1,15 +1,16 @@
-import axios from 'axios'
+import axios from 'axios';
 
-export const getCountriesList = async () => await axios.get('https://restcountries.eu/rest/v2/all')
+export const getCountriesList = () => axios.get('https://restcountries.eu/rest/v2/all');
 
-export const getCountry = async alpha3Code => await axios.get(`https://restcountries.eu/rest/v2/alpha/${alpha3Code}`)
+export const getCountry = (alpha3Code) => axios.get(`https://restcountries.eu/rest/v2/alpha/${alpha3Code}`);
 
-export const getCountryBorderList = async borders => {
-  const countriesAtBorder = borders.map(border => {
-    return getCountry(border)
-  })
+export const getCountryBorderList = async (borders) => {
+  const countriesAtBorder = borders.map((border) => getCountry(border));
 
-  const countriesList =  Promise.all(countriesAtBorder)
+  const countriesList = Promise.all(countriesAtBorder);
 
-  return (await countriesList).map(({data : {name, alpha3Code}})=> ({name: name, alpha3Code: alpha3Code}))
-}
+  return (await countriesList).map(({ data: { name, alpha3Code } }) => ({
+    name,
+    alpha3Code,
+  }));
+};

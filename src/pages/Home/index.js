@@ -1,41 +1,43 @@
-import CountriesList from '../../components/CountryList'
-import React, {useState, useEffect} from 'react'
-import { getCountriesList } from '../../services'
+import React, { useState, useEffect } from 'react';
+import CountriesList from '../../components/CountryList';
+import { getCountriesList } from '../../services';
 
 const Home = () => {
-  const [countries, setCountries] = useState([])
-  const [searchingCountry, setSearchingCountry] = useState('')
-  const [filteredCountries, setFilteredCountries] = useState([])
+  const [countries, setCountries] = useState([]);
+  const [searchingCountry, setSearchingCountry] = useState('');
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
-  const searchCountry = ({target: { value }}) => {
-    setSearchingCountry(value)
+  const searchCountry = ({ target: { value } }) => {
+    setSearchingCountry(value);
     if (!value) {
-      return setFilteredCountries([])
+      return setFilteredCountries([]);
     }
-    setFilteredCountries(countries.filter(country => {
-      return country.name.toLowerCase().includes(value)}
-    ))
-  }
+    setFilteredCountries(
+      countries.filter((country) => country.name.toLowerCase().includes(value)),
+    );
+  };
 
   useEffect(() => {
     const fetchCountrys = async () => {
-      const {data} = await getCountriesList()
-      setCountries(data)
+      const { data } = await getCountriesList();
+      setCountries(data);
     };
-    fetchCountrys()
-  }, [])
+    fetchCountrys();
+  }, []);
 
   return (
     <div className="App">
       <input
-        type='text'
-        placeholder='Search for a country'
+        type="text"
+        placeholder="Search for a country"
         value={searchingCountry}
-        onChange={e => searchCountry(e)}
+        onChange={(e) => searchCountry(e)}
       />
-      <CountriesList countries={searchingCountry ? filteredCountries : countries} />
+      <CountriesList
+        countries={searchingCountry ? filteredCountries : countries}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,8 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const CountriesList = ({countries}) =>
-  <ul>{countries.map(({name, population, region, capital, alpha3Code}) =>
+const CountriesList = ({ countries }) => (
+  <ul>{countries.map(({
+    name, population, region, capital, alpha3Code,
+  }) => (
     <li key={alpha3Code}>
       <Link to={`/country/${alpha3Code}`}>
         <p><b>{name}</b></p>
@@ -10,7 +12,9 @@ const CountriesList = ({countries}) =>
         <p><b>Region:</b> {region}</p>
         <p><b>Capital:</b> {capital}</p>
       </Link>
-    </li>)}
+    </li>
+  ))}
   </ul>
+);
 
-export default CountriesList
+export default CountriesList;
