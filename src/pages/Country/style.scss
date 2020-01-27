@@ -1,0 +1,9 @@
+.country {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__flag {
+    max-width: 40%;
+  }
+}
