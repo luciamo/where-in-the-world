@@ -33,7 +33,7 @@ const Home = () => {
         value={searchingCountry}
         onChange={e => searchCountry(e)}
       />
-      <CountriesList countries={filteredCountries.length ? filteredCountries : countries} />
+      <CountriesList countries={searchingCountry ? filteredCountries : countries} />
     </div>
   )
 }

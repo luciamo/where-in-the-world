@@ -10,7 +10,7 @@ const Country = ({match}) => {
   useEffect(() => {
     const fetchCountry = async () => {
       const countryRes = await getCountry(match.params.alpha3Code)
-      const countriesAtBorder = await getCountryBorderList(match.params.alpha3Code)
+      const countriesAtBorder = await getCountryBorderList(countryRes.data.borders)
 
       setBorderCountries(countriesAtBorder)
       setCountry(countryRes.data)
