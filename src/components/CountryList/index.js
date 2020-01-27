@@ -1,20 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { getCountriesList } from '../../services'
 
-const CountryList = () => {
-  const [AllCountries, setAllCountries] = useState([])
-
-  useEffect(() => {
-    const fetchAllCountrys = async () => {
-      const {data} = await getCountriesList()
-      setAllCountries(data)
-    };
-    fetchAllCountrys()
-  }, [])
-
-
-  return <ul>{AllCountries.map(({name, population, region, capital, alpha3Code}) =>
+const CountriesList = ({countries}) =>
+  <ul>{countries.map(({name, population, region, capital, alpha3Code}) =>
     <li key={alpha3Code}>
       <Link to={`/country/${alpha3Code}`}>
         <p><b>{name}</b></p>
@@ -24,6 +12,5 @@ const CountryList = () => {
       </Link>
     </li>)}
   </ul>
-}
 
-export default CountryList
+export default CountriesList
