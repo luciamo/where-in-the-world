@@ -1,9 +1,34 @@
-.country {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  &__flag {
-    max-width: 40%;
+.country_wrapper {
+  text-align: start;
+  .back_button {
+    border: hsl(0, 0%, 88%);
+    box-shadow: 0px 1px 5px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: hsl(0, 0%, 100%);
   }
+  .country {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &__flag {
+      max-width: 40%;
+    }
+
+  }
+  .borders {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    &__link {
+      text-decoration: none;
+      border: hsl(0, 0%, 88%);
+      box-shadow: 0px 1px 5px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: hsl(0, 0%, 100%);
+    }
+  }
+
 }

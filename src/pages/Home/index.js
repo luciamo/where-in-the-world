@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import CountriesList from '../../components/CountryList';
 import { getCountriesList, getCountriesByRegion } from '../../services';
-import { regions } from '../../constants';
+import { regions, ALL } from '../../constants';
+import './styles.scss';
 
 const Home = () => {
   const [countries, setCountries] = useState([]);
@@ -21,7 +22,7 @@ const Home = () => {
 
   const filterByRegion = async (region) => {
     setRegion(region);
-    const { data } = region === 'all' ? await getCountriesList() : await getCountriesByRegion(region);
+    const { data } = region === ALL ? await getCountriesList() : await getCountriesByRegion(region);
     setCountries(data);
   };
 
@@ -34,20 +35,23 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="App">
-      <input
-        type="text"
-        placeholder="Search for a country"
-        value={searchingCountry}
-        onChange={(e) => searchCountry(e)}
-      />
-      <select value={region} onChange={(e) => filterByRegion(e.target.value)}>
-        {
+    <div className="Home">
+      <div className="Home__fields">
+        <input
+          className="Home__field Home__field--text"
+          type="text"
+          placeholder="Search for a country"
+          value={searchingCountry}
+          onChange={(e) => searchCountry(e)}
+        />
+        <select className="Home__field Home__field--select" value={region} onChange={(e) => filterByRegion(e.target.value)}>
+          {
           regions.map((regionFromList) => (
             <option key={regionFromList} value={regionFromList}>{regionFromList}</option>
           ))
         }
-      </select>
+        </select>
+      </div>
       <CountriesList
         countries={searchingCountry ? filteredCountries : countries}
       />
