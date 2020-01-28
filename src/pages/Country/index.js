@@ -35,9 +35,9 @@ const Country = ({ match }) => {
   } = country;
 
   return (
-    <div>
+    <div className="country_wrapper">
       <Link to="/">
-        <button type="button">BACK</button>
+        <button type="button" className="back_button">BACK</button>
       </Link>
       <div className="country">
         <img className="country__flag" src={flag} alt={`${name} flag`} />
@@ -51,24 +51,20 @@ const Country = ({ match }) => {
         </span>
         <span>
           <p>
-            Top Level Domain:{' '}
-            {topLevelDomain
-              ? topLevelDomain.map((domain) => domain).join(', ')
-              : ''}
+            Top Level Domain: {topLevelDomain ? topLevelDomain.map((domain) => domain).join(', ') : ''}
           </p>
           <p>
-            Currencies:{' '}
-            {currencies ? currencies.map(({ name }) => name).join(', ') : ''}
+            Currencies: {currencies ? currencies.map((curencie) => curencie.name).join(', ') : ''}
           </p>
           <p>
-            Languages:{' '}
-            {languages ? languages.map(({ name }) => name).join(', ') : ''}
+            Languages: {languages ? languages.map((language) => language.name).join(', ') : ''}
           </p>
         </span>
       </div>
-      <span>
+      <span className="borders">
+        <span>Border Countries:</span>
         {borderCountrys.map(({ name, alpha3Code }) => (
-          <Link key={alpha3Code} to={`/country/${alpha3Code}`}>
+          <Link key={alpha3Code} to={`/country/${alpha3Code}`} className="borders__link">
             {name}
           </Link>
         ))}

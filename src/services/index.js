@@ -14,3 +14,5 @@ export const getCountryBorderList = async (borders) => {
     alpha3Code,
   }));
 };
+
+export const getCountriesByRegion = (region) => axios.get(`https://restcountries.eu/rest/v2/region/${region}`);
