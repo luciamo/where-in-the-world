@@ -11,11 +11,15 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-direction: column;
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+    }
 
     &__flag {
       max-width: 40%;
     }
-
   }
   .borders {
     display: flex;
