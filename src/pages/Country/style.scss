@@ -21,7 +21,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     &__link {
+      margin: 10px 5px;
       text-decoration: none;
       border: hsl(0, 0%, 88%);
       box-shadow: 0px 1px 5px;
