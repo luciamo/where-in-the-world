@@ -44,7 +44,11 @@ const Home = () => {
           value={searchingCountry}
           onChange={(e) => searchCountry(e)}
         />
-        <select className="Home__field Home__field--select" value={region} onChange={(e) => filterByRegion(e.target.value)}>
+        <select
+          className="Home__field Home__field--select"
+          value={region}
+          onChange={(e) => filterByRegion(e.target.value)}
+        >
           {
           regions.map((regionFromList) => (
             <option key={regionFromList} value={regionFromList}>{regionFromList}</option>
