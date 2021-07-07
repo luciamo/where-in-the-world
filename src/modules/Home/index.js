@@ -16,7 +16,7 @@ const Home = () => {
       return setFilteredCountries([]);
     }
     setFilteredCountries(
-      countries.filter((country) => country.name.toLowerCase().includes(value)),
+      countries.filter((country) => country.name.toLowerCase().includes(value.toLowerCase())),
     );
   };
 
