@@ -40,7 +40,7 @@ const Home = () => {
         <input
           className="Home__field Home__field--text"
           type="text"
-          placeholder="Search for a country"
+          placeholder="Type a country here"
           value={searchingCountry}
           onChange={(e) => searchCountry(e)}
         />
